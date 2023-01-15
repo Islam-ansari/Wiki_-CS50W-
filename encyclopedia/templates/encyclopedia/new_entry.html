@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+<head>
+    {% block title %}
+        Create New Page
+    {% endblock %}
+</head>
+
+{% block body %}
+    <h1>Create Your Own New Page</h1>
+    <form action="{% url 'wiki:new_entry' %}" method="post">
+        {% csrf_token %}
+        <div class="px-3 w-75">
+            <div class="mb-3">
+                <label for="title" class="form-label entry_label"><strong>Title</strong></label>
+                <input type="text" class="form-control" id="title" placeholder="Title" name="title">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label entry_label"><strong>Textarea</strong></label>
+                <textarea class="form-control" id="content" rows="10" name="content"></textarea>
+            </div> 
+            <div>
+                <button type="submit" class="btn btn-secondary btn-lg">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
